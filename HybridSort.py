@@ -1,8 +1,6 @@
 """
-Name: Nikit Parakh
-Project 2 - Hybrid Sorting - Starter Code
-CSE 331 Fall 2020
-Professor Sebnem Onsay
+Nikit Parakh
+Hybrid Sorting
 """
 from typing import List, Any, Dict
 
@@ -79,23 +77,3 @@ def insertion_sort(data: List[Any]) -> None:
         while (j > 0) and (data[j] < data[j - 1]):
             data[j], data[j - 1] = data[j - 1], data[j]
             j -= 1
-
-
-def find_match(user_interests: List[str], candidate_interests: Dict[str, List]) -> str:
-    """
-    This function takes in a users preferences as a list, and a dictionary
-    of candidates and their preferences. It assigns every preference a rank (index
-    in user_interests) and then uses those ranks to calculate how many inversions
-    (out of place preferences) the candidates has. Returns the name of candidate with
-    fewest inversions.
-    """
-    # assign every preference a rank
-    user = {i: index for index, i in enumerate(user_interests)}
-    inversion_dict = {}
-    for key, value in candidate_interests.items():
-        # for every candidate, use those ranks to create a list according
-        # to the candidates preferences, and then calculate inversions
-        candidate_rank_list = [user[i] for i in value]
-        inversion_dict[key] = inversions_count(candidate_rank_list)
-    # return name of candidate with fewest inversions
-    return min(inversion_dict, key=lambda x: inversion_dict[x])
